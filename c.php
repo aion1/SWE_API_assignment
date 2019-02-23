@@ -10,6 +10,7 @@
 
             return $data;
         } 
+
 if  (isset ($_GET['city'])) {
         error_reporting(0);
         $urlContents = curl("https://samples.openweathermap.org/data/2.5/weather?q=".$_GET['city']."&appid=b6907d289e10d714a6e88b30761fae22");
@@ -28,4 +29,6 @@ if  (isset ($_GET['city'])) {
     }
 else
 {}
+
+
 ?>
