@@ -129,6 +129,12 @@ else
         </form>
          
          <div id="weather">
+             <?php 
+            
+            if(isset ($weather)) {
+                error_reporting(0);
+                echo '<div class="alert alert-success" role="alert">'.$weather.'</div>';
+                ?>
           
             
       </div>
