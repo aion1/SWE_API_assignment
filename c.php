@@ -11,7 +11,7 @@
             return $data;
         } 
 
-if  (isset ($_GET['city'])) {
+    if  (isset ($_GET['city'])) {
         error_reporting(0);
         $urlContents = curl("https://samples.openweathermap.org/data/2.5/weather?q=".$_GET['city']."&appid=b6907d289e10d714a6e88b30761fae22");
         
@@ -29,9 +29,9 @@ if  (isset ($_GET['city'])) {
     }
 else
 {}
-
-
+    
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -129,23 +129,35 @@ else
         </form>
          
          <div id="weather">
-             <?php 
+          
+          <?php 
             
             if(isset ($weather)) {
                 error_reporting(0);
                 echo '<div class="alert alert-success" role="alert">'.$weather.'</div>';
-
                 $urlContent = curl('https://restcountries.eu/rest/v2/capital/'.$_GET['city']);
                 $capitalArray= json_decode($urlContent, true);
                 echo ' the country of this capital is '.$capitalArray[0]['name'];
                 
-                         $country= $capitalArray[0]['name'];
+                
+                $country= $capitalArray[0]['name'];
                 $urlcontent = curl('https://restcountries.eu/rest/v2/name/'.$country.'?fullText=true');
                 $countryArray= json_decode($urlcontent, true);
                 echo '<br>';
                 echo ' the language of this country is '.$countryArray[0]['languages'][0]['name'];
                 
+                echo "<br>";
+                $countrycode= $capitalArray[0]['alpha2Code'];
+                echo '<img src="https://www.countryflags.io/'.$countrycode.'/flat/64.png">';
                 
+
+                
+               
+                
+            }
+          ?>
+      
+
                 echo "<br>";
                 $countrycode= $capitalArray[0]['alpha2Code'];
                 echo '<img src="https://www.countryflags.io/'.$countrycode.'/flat/64.png">';
@@ -153,7 +165,7 @@ else
 
                 ?>
           
-            
+
       </div>
          
      </div> 
