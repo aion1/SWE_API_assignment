@@ -139,6 +139,13 @@ else
                 $capitalArray= json_decode($urlContent, true);
                 echo ' the country of this capital is '.$capitalArray[0]['name'];
                 
+                         $country= $capitalArray[0]['name'];
+                $urlcontent = curl('https://restcountries.eu/rest/v2/name/'.$country.'?fullText=true');
+                $countryArray= json_decode($urlcontent, true);
+                echo '<br>';
+                echo ' the language of this country is '.$countryArray[0]['languages'][0]['name'];
+                
+                
 
                 ?>
           
