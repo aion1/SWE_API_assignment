@@ -11,7 +11,7 @@
             return $data;
         } 
 
-if  (isset ($_GET['city'])) {
+    if  (isset ($_GET['city'])) {
         error_reporting(0);
         $urlContents = curl("https://samples.openweathermap.org/data/2.5/weather?q=".$_GET['city']."&appid=b6907d289e10d714a6e88b30761fae22");
         
@@ -29,9 +29,9 @@ if  (isset ($_GET['city'])) {
     }
 else
 {}
-
-
+    
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -129,32 +129,41 @@ else
         </form>
          
          <div id="weather">
-             <?php 
+          
+          <?php 
             
             if(isset ($weather)) {
                 error_reporting(0);
                 echo '<div class="alert alert-success" role="alert">'.$weather.'</div>';
-
                 $urlContent = curl('https://restcountries.eu/rest/v2/capital/'.$_GET['city']);
                 $capitalArray= json_decode($urlContent, true);
                 echo ' the country of this capital is '.$capitalArray[0]['name'];
                 
-                         $country= $capitalArray[0]['name'];
+                
+                $country= $capitalArray[0]['name'];
                 $urlcontent = curl('https://restcountries.eu/rest/v2/name/'.$country.'?fullText=true');
                 $countryArray= json_decode($urlcontent, true);
                 echo '<br>';
                 echo ' the language of this country is '.$countryArray[0]['languages'][0]['name'];
                 
+                echo "<br>";
+                $countrycode= $capitalArray[0]['alpha2Code'];
+                echo '<img src="https://www.countryflags.io/'.$countrycode.'/flat/64.png">';
                 
-
-                ?>
-          
-            
+                
+               
+                
+            }
+          ?>
+      
       </div>
          
      </div> 
       
-     
+      <form action="f.php" method="get">
+   			<button type="submit">Delete your account</button>
+      </form>
+
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
