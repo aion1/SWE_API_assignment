@@ -134,6 +134,12 @@ else
             if(isset ($weather)) {
                 error_reporting(0);
                 echo '<div class="alert alert-success" role="alert">'.$weather.'</div>';
+
+                $urlContent = curl('https://restcountries.eu/rest/v2/capital/'.$_GET['city']);
+                $capitalArray= json_decode($urlContent, true);
+                echo ' the country of this capital is '.$capitalArray[0]['name'];
+                
+
                 ?>
           
             
