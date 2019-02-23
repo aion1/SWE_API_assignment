@@ -150,12 +150,22 @@ else
                 $countrycode= $capitalArray[0]['alpha2Code'];
                 echo '<img src="https://www.countryflags.io/'.$countrycode.'/flat/64.png">';
                 
+
                 
                
                 
             }
           ?>
       
+
+                echo "<br>";
+                $countrycode= $capitalArray[0]['alpha2Code'];
+                echo '<img src="https://www.countryflags.io/'.$countrycode.'/flat/64.png">';
+                
+
+                ?>
+          
+
       </div>
          
      </div> 
